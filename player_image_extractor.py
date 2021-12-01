@@ -7,15 +7,15 @@ class Extractor:
     def __init__(self):
         self.clip = None
         self.images = None
-        self.found_players_dir = r'D:\PycharmProjects\DeepLearningNBA\found_players'
+        self.found_players_dir = r'found_players'
         self.image_no = 1
 
     def extract_players_from_video(self, video_path):
         self.clip = video_path
         cap = cv2.VideoCapture(video_path)
         self.video_path_dir = video_path.split("\\")[-1].split(".")[0]
-        if self.video_path_dir not in os.listdir(r'D:\PycharmProjects\DeepLearningNBA\found_players'):
-            os.mkdir(os.path.join(r'D:\PycharmProjects\DeepLearningNBA\found_players', self.video_path_dir))
+        if self.video_path_dir not in os.listdir(r'found_players'):
+            os.mkdir(os.path.join(r'found_players', self.video_path_dir))
         total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         frames_analyzed = 0
 
@@ -39,7 +39,7 @@ class Extractor:
                 # cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
                 crop_frame = frame[y:y+h, x:x+w]
-                cv2.imwrite(os.path.join(r'D:\PycharmProjects\DeepLearningNBA\found_players', self.video_path_dir, f"player_{self.image_no}.jpg"), crop_frame)
+                cv2.imwrite(os.path.join(r'found_players', self.video_path_dir, f"player_{self.image_no}.jpg"), crop_frame)
 
                 self.image_no += 1
 

@@ -137,7 +137,7 @@ class Tests:
         cv2.waitKey(0)
 
     def test_play_video_and_search_baseline(self):
-        cap = cv2.VideoCapture(r"D:\PycharmProjects\NBACV\test_videos\Steph2Wise.mp4")
+        cap = cv2.VideoCapture(r"test_videos\Steph2Wise.mp4")
         while (cap.isOpened()):
             _, frame = cap.read()
             mid = self.court_identifier.small_edge_map(frame)
@@ -179,7 +179,7 @@ class Tests:
         import player_image_extractor
 
         extractor = player_image_extractor.Extractor()
-        extractor.extract_players_from_video(r"D:\PycharmProjects\NBACV\test_videos\Steph2Wise.mp4")
+        extractor.extract_players_from_video(r"test_videos\Steph2Wise.mp4")
 
 
     def run_trainer(self):
@@ -190,7 +190,7 @@ class Tests:
 
     def test_extract_features(self):
         from trainer import Trainer
-        img = r'D:\PycharmProjects\DeepLearningNBA\found_players\Steph2Wise\player_7.jpg'
+        img = r'found_players\Steph2Wise\player_7.jpg'
         t = Trainer()
         print(t.extract_features(img))
 
@@ -201,5 +201,5 @@ class Tests:
         t.get_labels()
 
 t = Tests()
-t.test_get_labels()
+t.test_extractor()
 # t.test_get_images_for_clustering()
